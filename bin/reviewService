@@ -1,0 +1,30 @@
+const reviewsServices = [{
+  id: 1,
+  title: "Encantado con las dos cosas que hicieron",
+  description: "No solo hicieron la reparación si no que además, limpiaron el coche.",
+  score: 5,
+  serviceResume: 1
+},
+{
+  id: 2,
+  title: "Las ruedas y la alineación, perfectas",
+  description: "Neumáticos de calidad y servicio rápido",
+  score: 4,
+  serviceResume: 2
+},{
+  id: 3,
+  title: "Cambiaron las ruedas muy rápido",
+  description: "Me salvaron de llegar tarde al trabajo",
+  score: 3,
+  serviceResume: 3
+},
+{
+  id: 4,
+  title: "Aceite de mala calidad",
+  description: "El aceite que utilizan para el cambio, es de lo peor",
+  score: 1,
+  serviceResume: 3
+},
+]
+
+
