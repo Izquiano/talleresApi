@@ -155,6 +155,11 @@ router.get(
   // authMiddleware.isAuthenticated,
   serviceResumeController.serviceResumeDetail
 )
+router.delete(
+  "/services-resume/delete/:id",
+  // authMiddleware.isAuthenticated,
+  serviceResumeController.delete
+)
 
 
 // Review Services

@@ -11,7 +11,6 @@ module.exports.list = (req, res, next) => {
   ServiceResume.find()
     .populate("reviewService")
     .populate("services")
-
     .then((services) => {
       res.json(services);
     })
@@ -22,7 +21,6 @@ module.exports.listByUser = (req, res, next) => {
   const { id } = req.params;
   ServiceResume.find({ user: id })
     .sort({ date: -1 })
-    // .populate('reviewService')
     .populate({
       path: "services",
       populate: {
@@ -33,44 +31,27 @@ module.exports.listByUser = (req, res, next) => {
     .populate("workshop")
 
     .then((servicesResume) => {
-      // console.log("User Services Resume: " + servicesResume)
       res.json(servicesResume);
     })
     .catch((e) => next(e));
 };
 
 module.exports.create = (req, res, next) => {
-  const serviceResume = new ServiceResume(
-    req.body
-    // user: req.session.user.id,
-  );
+  const serviceResume = new ServiceResume(req.body);
   serviceResume
     .save()
     .then((sr) => {
-      console.log(sr)
-      
       Workshop.findById(sr.workshop).then((w) => {
         User.findById(req.session.userId).then((u) => {
           ServiceResume.findById(sr.id)
-          .populate("services")
-          .populate("car")
-          .populate("user")
-          .populate("workshop").then ((parte) => {
-            
-          nodemailer.sendCreatedServiceResumeToWorkshop(
-            
-            
-            u,
-            parte
-          );
-          nodemailer.sendCreatedServiceResumeToUser(
-           
-            u,
-            parte
-          );
-
-          })
-          
+            .populate("services")
+            .populate("car")
+            .populate("user")
+            .populate("workshop")
+            .then((parte) => {
+              nodemailer.sendCreatedServiceResumeToWorkshop(u, parte);
+              nodemailer.sendCreatedServiceResumeToUser(u, parte);
+            });
         });
       });
 
@@ -96,14 +77,34 @@ module.exports.edit = (req, res, next) => {
 module.exports.serviceResumeDetail = (req, res, next) => {
   console.log(req.params.id);
   ServiceResume.findById(req.params.id)
-    // .populate('reviewService')
     .populate("services")
     .populate("car")
     .populate("user")
     .populate("workshop")
-
     .then((serviceResume) => {
       res.json(serviceResume);
+    })
+    .catch((e) => next(e));
+};
+
+module.exports.delete = (req, res, next) => {
+  ServiceResume.findById(req.params.id)
+
+    .then((sr) => {
+      if (!sr) {
+        throw createError(404, "Service Resume not found");
+      } else {
+        if (sr.user != req.session.userId) {
+          throw createError(
+            403,
+            "You cannot delete Services Resume that aren't yours"
+          );
+        } else {
+          return sr.delete().then(() => {
+            res.status(200).json({})
+          });
+        }
+      }
     })
     .catch((e) => next(e));
 };
