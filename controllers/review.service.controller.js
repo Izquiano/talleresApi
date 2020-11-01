@@ -21,7 +21,7 @@ module.exports.createReview = (req, res, next) => {
       if (!rs) {
         throw createError(404, "Service not found");
       } else {
-        if (rs.user === req.currentUser.id) {
+        if (rs.user === req.session.userId) {
           throw createError(
             403,
             "You cannot leave reviews for your own product"
@@ -29,7 +29,7 @@ module.exports.createReview = (req, res, next) => {
         } else {
           const review = new ReviewService({
             ...req.body,
-            user: req.currentUser.id,
+            user: req.session.userId,
             serviceResume: rs.id
           });
           return review.save().then((rs) => {
@@ -62,7 +62,7 @@ module.exports.deleteReview = (req, res, next) => {
       if (!r) {
         throw createError(404, "Review not found");
       } else {
-        if (r.user != req.currentUser.id) {
+        if (r.user != req.session.userId) {
           throw createError(403, "You cannot delete another user's reviews");
         } else {
           return r.delete().then((r) => {
@@ -79,7 +79,7 @@ module.exports.editReview = (req, res, next) => {
   ReviewService.findById(req.params.id)
   
     .then((r) => {
-      if (r.user != req.currentUser.id) {
+      if (r.user != req.session.userId) {
         throw createError(403, "You can't edit another user's reviews");
       } else {
           return r.update(req.body).then((editedReview) => {

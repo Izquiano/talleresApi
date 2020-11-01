@@ -63,7 +63,7 @@ module.exports.create = (req, res, next) => {
 module.exports.edit = (req, res, next) => {
   ServiceResume.findById(req.params.id)
     .then((rs) => {
-      if (rs.user != req.currentUser.id) {
+      if (rs.user != req.session.userId) {
         throw createError(403, "You can't edit another user's Service Resume");
       } else {
         return rs.update(req.body).then((editedServiceResume) => {
@@ -106,5 +106,21 @@ module.exports.delete = (req, res, next) => {
         }
       }
     })
+    .catch((e) => next(e));
+};
+
+module.exports.cerrarParte = (req, res, next) => {
+  ServiceResume.findById(req.params.id)
+
+    .then((sr) => {
+      if (!sr) {
+        throw createError(404, "Service Resume not found");
+      } else {
+          return sr.update({ active: false }).then((srClosed) => {
+            res.status(201).send(`<div>Parte Cerrado correctamente</div>`)
+          })
+      }
+    })
+    
     .catch((e) => next(e));
 };

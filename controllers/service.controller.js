@@ -40,7 +40,7 @@ module.exports.edit = (req, res, next) => {
   Service.findById(req.params.id)
   
     .then((s) => {
-      // if (s.user != req.currentUser.id) {
+      // if (s.user != req.session.userId) {
       //   throw createError(403, "You can't edit another user's services");
       // } else {
         console.log('aaaa')
@@ -60,7 +60,7 @@ module.exports.delete = (req, res, next) => {
       if (!s) {
         throw createError(404, "Service not found");
       } else {
-        if (s.user != req.currentUser.id) {
+        if (s.user != req.session.userId) {
           throw createError(
             403,
             "You cannot delete services that aren't yours"

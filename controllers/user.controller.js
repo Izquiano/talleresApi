@@ -47,15 +47,22 @@ module.exports.profile = (req, res, next) => {
     .populate("car")
 
     .then((u) => {
-      res.json(u);
-    });
+      if (u._id != req.session.userId) {
+        throw createError(403, "You can't view another user's profile");
+      } else {
+        res.status(200).json(u);
+      }
+
+
+      
+    }).catch(err => console.log(err))
 };
 
 module.exports.editProfile = (req, res, next) => {
   User.findById(req.params.id)
 
     .then((u) => {
-      if (u._id != req.currentUser.id) {
+      if (u._id != req.session.userId) {
         throw createError(403, "You can't edit another user's profile");
       } else {
         return u.update(req.body).then((editedProfile) => {
