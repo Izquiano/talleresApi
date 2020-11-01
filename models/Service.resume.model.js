@@ -26,6 +26,15 @@ const serviceResumeSchema = new mongoose.Schema(
       type: mongoose.Schema.Types.ObjectId,
       ref: "User",
     },
+    active:{
+      type: Boolean,
+      default: true
+    }, 
+    workshop: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "Workshop",
+
+    }
   },
   {
     timestamps: true,
@@ -48,6 +57,8 @@ serviceResumeSchema.virtual("reviewService", {
   foreignField: "serviceResume",
   localField: "_id",
 });
+
+
 
 const ServiceResume = mongoose.model("ServiceResume", serviceResumeSchema);
 

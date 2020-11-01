@@ -7,17 +7,15 @@ const serviceSchema = new mongoose.Schema(
     name: {
       type: String,
       required: [true, "Name is required"],
-      enum: []
+      enum: [],
     },
     category: {
       type: String,
       required: [true, "Category is required"],
-      enum: ["Chapa y pintura", "Mecánica y mantenimiento"]
-
+      enum: ["Chapa y pintura", "Mecánica y mantenimiento"],
     },
     description: {
       type: String,
-      
     },
     price: {
       type: String,
@@ -25,12 +23,7 @@ const serviceSchema = new mongoose.Schema(
     },
     image: String,
     workshop: {
-      type: [
-        {
-          type: mongoose.Schema.Types.ObjectId,
-          ref: "Workshop",
-        }],
-      
+      type: [{ type: mongoose.Schema.Types.ObjectId, ref: "Workshop" }],
     },
   },
   {
@@ -48,9 +41,6 @@ const serviceSchema = new mongoose.Schema(
     },
   }
 );
-
-
-
 
 const Service = mongoose.model("Service", serviceSchema);
 

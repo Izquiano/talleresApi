@@ -25,7 +25,7 @@ const carSchema = new mongoose.Schema(
       required: [true, "Chasis Number is required"],
     },
     user: {
-      type: [mongoose.Schema.Types.ObjectId],
+      type: mongoose.Schema.Types.ObjectId,
       ref: "User",
     },
     

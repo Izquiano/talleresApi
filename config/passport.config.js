@@ -26,14 +26,15 @@ const google = new GoogleStrategy({
               return;
           } else {
               const newUser = new User({
-                  type: 'user',
-                  googleID: profile.id,
+                 
+                  
                   name: profile.displayName,
-                  username: profile.emails[0].value.split("@")[0],
+                  
                   email: profile.emails[0].value,
-                  avatar: profile._json.picture,
                   password: profile.provider + Math.random().toString(36).substring(7),
-                  googleID: profile.id,
+                  activation: {
+                     active: true
+                  }
 
               });
               newUser
@@ -67,10 +68,8 @@ const facebook = new FacebookStrategy({
           } else {
 
               const newUser = new User({
-                  type: 'user',
                   name: profile.displayName,
                   email: profile.emails[0].value,
-                  avatar: profile.photos[0].value,
                   password: profile.provider + randomPassword(),
                   social: {
                       facebook: profile.id,

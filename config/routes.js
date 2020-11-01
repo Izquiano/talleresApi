@@ -21,6 +21,8 @@ router.get(
   workshopController.list
 );
 
+
+
 // Services
 router.get(
   "/services",
@@ -90,6 +92,8 @@ router.get(
   userController.activateUser
 );
 
+router.get('/auth/google', authMiddleware.isNotAuthenticated, userController.doSocialLoginGoogle);
+
 // Cars
 router.get(
   "/cars",
@@ -107,6 +111,12 @@ router.get(
   // authMiddleware.isAuthenticated,
   carController.profile
 );
+router.get(
+  "/user/cars/:id",
+  // authMiddleware.isAuthenticated,
+  carController.listUserCars
+);
+
 router.patch(
   "/cars/:id",
   // authMiddleware.isAuthenticated,
@@ -135,6 +145,17 @@ router.patch(
   // authMiddleware.isAuthenticated,
   serviceResumeController.edit
 );
+router.get(
+  "/services-resume/:id",
+  // authMiddleware.isAuthenticated,
+  serviceResumeController.listByUser
+)
+router.get(
+  "/services-resume/detail/:id",
+  // authMiddleware.isAuthenticated,
+  serviceResumeController.serviceResumeDetail
+)
+
 
 // Review Services
 router.get(

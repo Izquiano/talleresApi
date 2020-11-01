@@ -1,6 +1,8 @@
 const createError = require("http-errors");
 const User = require("../models/User.model");
 const nodemailer = require("../config/mailer.config");
+const passport = require("passport");
+const mongoose = require("mongoose");
 
 module.exports.login = (req, res, next) => {
   const { email, password } = req.body;
@@ -16,35 +18,23 @@ module.exports.login = (req, res, next) => {
           if (!match) {
             throw createError(400, "Wrong credentials");
           } else {
-
-
             if (user.activation.active) {
-              // req.session.userId = user._id;
+              req.session.userId = user._id;
 
-              req.session.user = user;
-            res.json(user);
-          } else {
-              res.render("users/login", {
-                  error: {
-                      validation: {
-                          message: "Your account is not active, check your email!",
-                      },
-                  },
-              });
-          }
-
-
-
-
-
-
-
-            
+              // req.session.user = user;
+              console.log(req.session.userId);
+              res.json(user);
+            } else {
+              throw createError(
+                400,
+                "Your account is not active, check your email!"
+              );
+            }
           }
         });
       }
     })
-    .catch((e) => next(e));
+    .catch((e) => next());
 };
 
 module.exports.logout = (req, res, next) => {
@@ -88,23 +78,25 @@ module.exports.list = (req, res, next) => {
 module.exports.activateUser = (req, res, next) => {
   User.findOne({ "activation.token": req.params.token })
     .then((user) => {
-      
-        user.activation.active = true;
-        user
-          .save()
-          .then((user) => {
-            res.json(user);
-          })
-          .catch((e) => next)
-      
-      }
-    )
+      user.activation.active = true;
+      user
+        .save()
+        .then((user) => {
+          res.send(`<h2>Bienvenido ${user.name}</h2>
+          <p>Gracias por activar su cuenta</p>
+          <p>Vuelva a la App Talleres para hacer login</p>
+          <a href="${process.env.APP_TALLERES_URL}/login">APP TALLERES</a>
+          
+          `);
+        })
+        .catch((e) => next);
+    })
     .catch((e) => next);
 };
 
 module.exports.createUser = (req, res, next) => {
   const user = new User(req.body);
- 
+
   user
     .save()
 
@@ -115,57 +107,46 @@ module.exports.createUser = (req, res, next) => {
         user._id,
         user.activation.token
       );
-      res.json(user);
+      res.status(201).json(user);
     })
     .catch((error) => {
       if (error instanceof mongoose.Error.ValidationError) {
-        res.render("users/signup", { error: error.errors, user });
+        res.send({ error: error.errors, user });
       } else if (error.code === 11000) {
         // error when duplicated user
-        
 
-        res.render("users/signup", {
-          user,
-          error: {
-            email: {
-              message: "user already exists",
-            },
-          },
-        });
+        res.json(error);
       } else {
-        
-
         next(error);
       }
     })
     .catch(next);
 };
 
+// module.exports.doSocialLoginFacebook = (req, res, next) => {
+//   const passportController = passport.authenticate(
+//     "facebook",
+//     (error, user) => {
+//       if (error) {
+//         next(error);
+//       } else {
+//         req.session.userId = user._id;
+//         res.json(user);
+//       }
+//     }
+//   );
 
-module.exports.doSocialLoginFacebook = (req, res, next) => {
-  const passportController = passport.authenticate(
-      "facebook",
-      (error, user) => {
-          if (error) {
-              next(error);
-          } else {
-            req.session.userId = user._id;
-            res.json(user);
-          }
-      }
-  );
-
-  passportController(req, res, next);
-};
+//   passportController(req, res, next);
+// };
 
 module.exports.doSocialLoginGoogle = (req, res, next) => {
   const passportController = passport.authenticate("google", (error, user) => {
-      if (error) {
-          next(error);
-      } else {
-          req.session.userId = user._id;
-          res.json(user);
-      }
+    if (error) {
+      next(error);
+    } else {
+      req.session.userId = user._id;
+      res.json(user);
+    }
   });
 
   passportController(req, res, next);
