@@ -18,17 +18,17 @@ const userSchema = new mongoose.Schema(
   {
     name: {
       type: String,
-      required: [true, "Name is required"],
+      required: [true, "El campo nombre es requerido"],
     },
     email: {
       type: String,
-      required: [true, "Email is required"],
+      required: [true, "El campo email es requerido"],
       match: [EMAIL_PATTERN, "Email is not valid"],
     },
     password: {
       type: String,
-      required: [true, "Password is required"],
-      minlength: [10, "Password must have 10 characters or more"],
+      required: [true, "El campo contraseña es requerido"],
+      minlength: [10, "La contraseña debe tener 10 caracteres o más"],
     },
     activation: {
       active: {
@@ -44,7 +44,11 @@ const userSchema = new mongoose.Schema(
         googleID: String,
         facebookID: String,
     },
-
+    rol: {
+      type: String,
+        enum : ['client','admin'],
+        default: 'client'
+    }
       
   },
   {

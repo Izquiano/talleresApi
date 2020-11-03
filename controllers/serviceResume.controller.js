@@ -9,10 +9,22 @@ const createError = require("http-errors");
 
 module.exports.list = (req, res, next) => {
   ServiceResume.find()
-    .populate("reviewService")
-    .populate("services")
-    .then((services) => {
-      res.json(services);
+  .populate({
+    path: "services",
+    populate: {
+      path: "workshop",
+    },
+  })
+  .populate("car")
+  .populate("user")
+  .populate({
+    path: "workshop",
+    populate:{
+      path: "services"
+    }
+  })
+    .then((servicesResume) => {
+      res.json(servicesResume);
     })
     .catch((e) => next(e));
 };

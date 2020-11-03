@@ -7,11 +7,13 @@ const mongoose = require("mongoose");
 module.exports.login = (req, res, next) => {
   const { email, password } = req.body;
   if (!email || !password) {
+    
     throw createError(400, "Missing credentials");
   }
   User.findOne({ email })
     .then((user) => {
       if (!user) {
+        // res.status(400).json({})
         throw createError(400, "Wrong credentials");
       } else {
         return user.checkPassword(password).then((match) => {
@@ -34,7 +36,9 @@ module.exports.login = (req, res, next) => {
         });
       }
     })
-    .catch((e) => next());
+    .catch((e) => {
+      next();
+    });
 };
 
 module.exports.logout = (req, res, next) => {
@@ -52,10 +56,8 @@ module.exports.profile = (req, res, next) => {
       } else {
         res.status(200).json(u);
       }
-
-
-      
-    }).catch(err => console.log(err))
+    })
+    .catch((err) => console.log(err));
 };
 
 module.exports.editProfile = (req, res, next) => {
