@@ -1,0 +1,14 @@
+{
+    "_id" : ObjectId("5fa2c66c7bdaaf29c4f746e0"),
+    "activation" : {
+        "active" : true,
+        "token" : "aNmSDVyq8AJsRR1tXxZ69WZyJ"
+    },
+    "rol" : "client",
+    "name" : "Daniel Fernández Izquiano",
+    "email" : "izquiano@hotmail.com",
+    "password" : "$2b$10$HaVj58EOqCSW9ypzWqkruePIQ1cnayM86sJ/FiJAqFge5hTOgxY/e",
+    "createdAt" : ISODate("2020-11-04T15:19:08.518Z"),
+    "updatedAt" : ISODate("2020-11-04T15:19:44.161Z"),
+    "__v" : 0
+}

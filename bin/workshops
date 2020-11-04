@@ -1,0 +1,71 @@
+/* 1 */
+{
+  "_id" : ObjectId("5f9140c40777322dba2ac758"),
+  "name" : "La Laguna",
+  "email" : "danizquiano@gmail.com",
+  "telephone" : "616616616",
+  "image" : "https://lh3.ggpht.com/p/AF1QipPjxDVkPlzrJBid7FnC23G_-3zTl4LFxkKB91PJ=s1536",
+  "location" : {
+      "lat" : 36.5044271,
+      "lng" : -6.2736591
+  },
+  "createdAt" : ISODate("2020-10-22T08:20:20.806Z"),
+  "updatedAt" : ISODate("2020-10-22T08:20:20.806Z"),
+  "__v" : 0
+}
+
+/* 2 */
+{
+  "_id" : ObjectId("5f9140c40777322dba2ac753"),
+  "name" : "Cubimotor",
+  "email" : "danizquiano@gmail.com",
+  "telephone" : "645678904",
+  "image" : "https://lh3.ggpht.com/p/AF1QipPjxDVkPlzrJBid7FnC23G_-3zTl4LFxkKB91PJ=s1536",
+  "location" : {
+      "lat" : 36.503989,
+      "lng" : -6.272727
+  },
+  "createdAt" : ISODate("2020-10-23T08:20:20.806Z"),
+  "updatedAt" : ISODate("2020-10-23T08:20:20.806Z"),
+  "__v" : 0
+}
+
+/* 3 */
+
+{
+  "name" : "Lodamar",
+  "email" : "danizquiano@gmail.com",
+  "telephone" : "622222222",
+  "image" : "https://lh3.ggpht.com/p/AF1QipPjxDVkPlzrJBid7FnC23G_-3zTl4LFxkKB91PJ=s1536",
+  "location" : {
+      "lat" : 36.5011722,
+      "lng" : -6.2717083
+  },
+}
+
+{
+  "name" : "Estéban Guerrero",
+  "email" : "danizquiano@gmail.com",
+  "telephone" : "636000222",
+  "image" : "https://lh3.ggpht.com/p/AF1QipPjxDVkPlzrJBid7FnC23G_-3zTl4LFxkKB91PJ=s1536",
+  "location" : {
+      "lat" : 36.5030695,
+      "lng" : -6.273897
+  },
+}
+
+{
+  "name" : "Asdrúbal",
+  "email" : "danizquiano@gmail.com",
+  "telephone" : "636000222",
+  "image" : "https://lh3.ggpht.com/p/AF1QipPjxDVkPlzrJBid7FnC23G_-3zTl4LFxkKB91PJ=s1536",
+  "location" : {
+      "lat" : 36.5049632,
+      "lng" : -6.2680502
+  },
+}
+
+
+
+
+

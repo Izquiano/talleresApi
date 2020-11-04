@@ -64,8 +64,7 @@ module.exports.sendCreatedServiceResumeToWorkshop = (user, resumeService) => {
         <p><b>Datos del usuario:</b></p>
         <p>Nombre: ${user.name}</p>
         <p>Email: ${user.email}</p>
-        <div>Acciones:</div>
-        <p>Cerrar Parte <a href="${process.env.REACT_APP_API_URL}/cerrar-parte/${resumeService.id}">Cerrar</a></p>
+       
         
         
 			

@@ -9,6 +9,7 @@ const createError = require("http-errors");
 
 module.exports.list = (req, res, next) => {
   ServiceResume.find()
+  .sort({ active: -1, date: -1 })
   .populate({
     path: "services",
     populate: {
@@ -32,7 +33,7 @@ module.exports.list = (req, res, next) => {
 module.exports.listByUser = (req, res, next) => {
   const { id } = req.params;
   ServiceResume.find({ user: id })
-    .sort({ date: -1 })
+    .sort({ active: 1, date: -1 })
     .populate({
       path: "services",
       populate: {

@@ -1,0 +1,118 @@
+[
+{
+  "_id" : ObjectId("5f9140c40777322dba2ac759"),
+  "workshop" : [ 
+      ObjectId("5f9140c40777322dba2ac758"), 
+      ObjectId("5f9140c40777322dba2ac753")
+  ],
+  "name" : "Aceite y filtros",
+  "category" : "Mecánica y mantenimiento",
+  "description" : "Cambiamos el aceite y los filtros de tu vehículo con componentes de alta calidad.",
+  "price" : "955.00",
+  "image" : "http://lorempixel.com/640/480/sports",
+  "createdAt" : ISODate("2020-10-22T08:20:20.815Z"),
+  "updatedAt" : ISODate("2020-10-22T08:20:20.815Z"),
+  "__v" : 0
+}
+
+/* 2 */
+{
+  "_id" : ObjectId("5f9140c40777322dba2ac75a"),
+  "workshop" : [ 
+      ObjectId("5f9140c40777322dba2ac758"), 
+      ObjectId("5f9140c40777322dba2ac753")
+  ],
+  "name" : "Ruedas y alineación",
+  "category" : "Mecánica y mantenimiento",
+  "description" : "Neumáticos nuevos y alineación de la dirección de regalo.",
+  "price" : "873.00",
+  "image" : "http://lorempixel.com/640/480/technics",
+  "createdAt" : ISODate("2020-10-22T08:20:20.815Z"),
+  "updatedAt" : ISODate("2020-10-22T08:20:20.815Z"),
+  "__v" : 0
+}
+
+/* 3 */
+{
+  "_id" : ObjectId("5f9140c40777322dba2ac45b"),
+  "workshop" : [ 
+      ObjectId("5f9140c40777322dba2ac758"), 
+      ObjectId("5f9140c40777322dba2ac753")
+  ],
+  "name" : "Suspensión",
+  "category" : "Mecánica y mantenimiento",
+  "description" : "Reparación o cambio de la suspensión",
+  "price" : "873.00",
+  "image" : "http://lorempixel.com/640/480/technics",
+  "createdAt" : ISODate("2020-10-22T08:20:20.815Z"),
+  "updatedAt" : ISODate("2020-10-22T08:20:20.815Z"),
+  "__v" : 0
+}
+
+/* 4 */
+{
+  "_id" : ObjectId("5f9140c40777322dba2ac12b"),
+  "workshop" : [ 
+      ObjectId("5f9140c40777322dba2ac758"), 
+      ObjectId("5f9140c40777322dba2ac753")
+  ],
+  "name" : "Discos de freno",
+  "category" : "Mecánica y mantenimiento",
+  "description" : "Revisión y cambio de los discos de freno en el caso de que estén erosionados",
+  "price" : "873.00",
+  "image" : "http://lorempixel.com/640/480/technics",
+  "createdAt" : ISODate("2020-10-22T08:20:20.815Z"),
+  "updatedAt" : ISODate("2020-10-22T08:20:20.815Z"),
+  "__v" : 0
+}
+
+/* 5 */
+{
+  "_id" : ObjectId("5f9140c40777322dba2ac34b"),
+  "workshop" : [ 
+      ObjectId("5f9140c40777322dba2ac758"), 
+      ObjectId("5f9140c40777322dba2ac753")
+  ],
+  "name" : "Pastillas de freno",
+  "category" : "Mecánica y mantenimiento",
+  "description" : "Reemplazo de las pastillas de freno con zapatas de alta calidad y durabilidad",
+  "price" : "873.00",
+  "image" : "http://lorempixel.com/640/480/technics",
+  "createdAt" : ISODate("2020-10-22T08:20:20.815Z"),
+  "updatedAt" : ISODate("2020-10-22T08:20:20.815Z"),
+  "__v" : 0
+}
+
+/* 6 */
+{
+  "_id" : ObjectId("5f9140c40777322dba2ac39b"),
+  "workshop" : [ 
+      ObjectId("5f9140c40777322dba2ac758"), 
+      ObjectId("5f9140c40777322dba2ac753")
+  ],
+  "name" : "Pre-ITV",
+  "category" : "Mecánica y mantenimiento",
+  "description" : "Revisión completa de su vehículo para que no tenga problemas al pasar la revisión periódica",
+  "price" : "873.00",
+  "image" : "http://lorempixel.com/640/480/technics",
+  "createdAt" : ISODate("2020-10-22T08:20:20.815Z"),
+  "updatedAt" : ISODate("2020-10-22T08:20:20.815Z"),
+  "__v" : 0
+}
+
+/* 7 */
+{
+  "_id" : ObjectId("5f9140c40777322dba2ac74b"),
+  "workshop" : [ 
+      ObjectId("5f9140c40777322dba2ac758"), 
+      ObjectId("5f9140c40777322dba2ac753")
+  ],
+  "name" : "Mecánica",
+  "category" : "Mecánica y mantenimiento",
+  "description" : "Reparación mecánica de su vehículo. Fallos de motor, elécticos y cambios de piezas en general",
+  "price" : "873.00",
+  "image" : "http://lorempixel.com/640/480/technics",
+  "createdAt" : ISODate("2020-10-22T08:20:20.815Z"),
+  "updatedAt" : ISODate("2020-10-22T08:20:20.815Z"),
+  "__v" : 0
+}

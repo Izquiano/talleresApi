@@ -161,6 +161,12 @@ router.delete(
   serviceResumeController.delete
 )
 
+router.patch(
+  "/cerrar-parte/:id",
+  // authMiddleware.isAuthenticated,
+  serviceResumeController.cerrarParte
+);
+
 
 // Review Services
 router.get(
@@ -169,11 +175,6 @@ router.get(
   reviewServiceController.list
 );
 
-router.get(
-  "/cerrar-parte/:id",
-  // authMiddleware.isAuthenticated,
-  serviceResumeController.cerrarParte
-);
 
 router.post(
   "/service/:id/review",
