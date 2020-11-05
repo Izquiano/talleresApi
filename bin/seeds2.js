@@ -162,6 +162,7 @@ const serviceResumes = [
     user: ObjectId("5fa2c66c7bdaaf29c4f746e0"),
     car: ObjectId("5fa2c6a57bdaaf29c4f746e1"),
     workshop: ObjectId("5f9140c40777322dba2ac758"),
+    confirmation: false
   },
 
   {
@@ -171,6 +172,7 @@ const serviceResumes = [
     user: ObjectId("5fa2c66c7bdaaf29c4f746e0"),
     car: ObjectId("5fa2c6a57bdaaf29c4f746e1"),
     workshop: ObjectId("5f9140c40777322dba2ac753"),
+    confirmation: false
   },
 
   {
@@ -188,6 +190,7 @@ const serviceResumes = [
     user: ObjectId("5fa2c66c7bdaaf29c4f746e0"),
     car: ObjectId("5fa2c6a57bdaaf29c4f746e1"),
     workshop: ObjectId("5f9140c40777322dba2ac753"),
+    confirmation: false
   },
 ];
 

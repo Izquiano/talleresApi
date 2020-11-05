@@ -160,6 +160,11 @@ router.delete(
   // authMiddleware.isAuthenticated,
   serviceResumeController.delete
 )
+router.patch(
+  "/services-resume/confirmation/:id",
+  // authMiddleware.isAuthenticated,
+  serviceResumeController.confirmation
+)
 
 router.patch(
   "/cerrar-parte/:id",

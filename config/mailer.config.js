@@ -80,7 +80,7 @@ module.exports.sendCreatedServiceResumeToUser = (user, resumeService) => {
   transport.sendMail({
     to: user.email,
     sender: `App Talleres`,
-    subject: "Confirmación de Reserva en App Talleres",
+    subject: "Reserva en App Talleres",
     html: `
     <h1>Hola ${user.name}</h1>
     <p>Has hecho una reserva en <b>${
@@ -136,7 +136,7 @@ module.exports.sendDeleteResumeToUser = (user, workshop, dateSr) => {
   transport.sendMail({
     to: user.email,
     sender: `App Talleres`,
-    subject: "Reserva Denegada",
+    subject: "Reserva DENEGADA 😖",
     html: `
     <h1>Hola ${user.name}</h1>
     <h3>El taller <b>${
@@ -152,3 +152,27 @@ module.exports.sendDeleteResumeToUser = (user, workshop, dateSr) => {
   });
 
 }
+
+
+module.exports.sendConfirmationToUser = (user, workshop, dateSr) => {
+  transport.sendMail({
+    to: user.email,
+    sender: `App Talleres`,
+    subject: "Reserva CONFIRMADA 😃",
+    html: `
+    <h1>Hola ${user.name}</h1>
+    <h3>El taller <b>${
+      workshop
+    } ha CONFIRMADO su reserva</b></h3>
+    
+    <p><b>Fecha de la reserva:</b></p>
+  <p>${FormatDate(dateSr)}</p>
+  
+
+    
+              
+          `,
+  });
+
+}
+

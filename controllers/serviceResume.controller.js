@@ -143,3 +143,23 @@ module.exports.cerrarParte = (req, res, next) => {
     
     .catch((e) => next(e));
 };
+
+module.exports.confirmation = (req, res, next) => {
+  ServiceResume.findById(req.params.id)
+  .populate("user")
+  .populate("workshop")
+    .then((rs) => {
+      console.log(req.body)
+      if (!rs) {
+        throw createError(404, "Service Resume not found");
+      } 
+      else {
+        return rs.update(req.body).then(() => {
+          res.status(201).json({})
+          nodemailer.sendConfirmationToUser(rs.user, rs.workshop.name, rs.date)
+
+        });
+      }
+    })
+    .catch((e) => next(e));
+};

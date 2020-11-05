@@ -38,6 +38,10 @@ const serviceResumeSchema = new mongoose.Schema(
     },
     damagedParts: {
       type: [String]
+    },
+    confirmation: {
+      type: Boolean,
+      default: false
     }
   },
   {
