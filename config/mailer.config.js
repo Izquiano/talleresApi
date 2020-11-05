@@ -51,10 +51,15 @@ module.exports.sendCreatedServiceResumeToWorkshop = (user, resumeService) => {
             <p>${resumeService.workshop.name}</p>
             <p><b>Fecha:</b></p>
         <p>${FormatDate(resumeService.date)}</p>
+        
             <p><b>Servicios:</b></p>
         ${resumeService.services.map((el) => {
           return `<p>· ${el.name}</p>`;
         })}
+        <p><b>Partes dañadas:</b></p>
+${resumeService.damagedParts.map((el) => {
+  return `<p>· ${el}</p>`;
+})}
         <p><b>Coche:</b></p>
         <p>Marca: ${resumeService.car.carBrand}</p>
         <p>Modelo: ${resumeService.car.model}</p>
@@ -71,24 +76,28 @@ module.exports.sendCreatedServiceResumeToWorkshop = (user, resumeService) => {
 		`,
   });
 };
-module.exports.sendCreatedServiceResumeToUser = (
-  
-  user,
-  resumeService
-) => {
+module.exports.sendCreatedServiceResumeToUser = (user, resumeService) => {
   transport.sendMail({
     to: user.email,
     sender: `App Talleres`,
     subject: "Confirmación de Reserva en App Talleres",
     html: `
     <h1>Hola ${user.name}</h1>
-    <p>Has hecho una reserva en <b>${resumeService.workshop.name}</b> con estos detalles:</p>
+    <p>Has hecho una reserva en <b>${
+      resumeService.workshop.name
+    }</b> con estos detalles:</p>
     
     <p><b>Fecha:</b></p>
 <p>${FormatDate(resumeService.date)}</p>
+
     <p><b>Servicios:</b></p>
 ${resumeService.services.map((el) => {
   return `<p>· ${el.name}</p>`;
+})}
+
+<p><b>Partes dañadas:</b></p>
+${resumeService.damagedParts.map((el) => {
+  return `<p>· ${el}</p>`;
 })}
 <p><b>Coche para reparar:</b></p>
 <p>Marca: ${resumeService.car.carBrand}</p>
@@ -100,7 +109,9 @@ ${resumeService.services.map((el) => {
 <p>Nombre: ${resumeService.workshop.name}</p>
 <p>Email: ${resumeService.workshop.email}</p>
 <p>Teléfono: 
-<a href="tel:${resumeService.workshop.telephone}">${resumeService.workshop.telephone}</a>
+<a href="tel:${resumeService.workshop.telephone}">${
+      resumeService.workshop.telephone
+    }</a>
 </p>
               
           `,

@@ -17,10 +17,6 @@ const serviceSchema = new mongoose.Schema(
     description: {
       type: String,
     },
-    price: {
-      type: String,
-      required: [true, "Price is required"],
-    },
     image: String,
     workshop: {
       type: [{ type: mongoose.Schema.Types.ObjectId, ref: "Workshop" }],

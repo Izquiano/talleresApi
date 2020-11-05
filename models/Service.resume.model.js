@@ -25,6 +25,7 @@ const serviceResumeSchema = new mongoose.Schema(
     {
       type: mongoose.Schema.Types.ObjectId,
       ref: "User",
+      required: true
     },
     active:{
       type: Boolean,
@@ -34,6 +35,9 @@ const serviceResumeSchema = new mongoose.Schema(
       type: mongoose.Schema.Types.ObjectId,
       ref: "Workshop",
 
+    },
+    damagedParts: {
+      type: [String]
     }
   },
   {
