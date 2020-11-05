@@ -70,14 +70,14 @@ const services = [
     category: "Mecánica y mantenimiento",
     description:
       "Cambiamos el aceite y los filtros de tu vehículo con componentes de alta calidad.",
-    price: "955.00",
+    
     image: "http://lorempixel.com/640/480/sports",
   },
   {
     name: "Ruedas y alineación",
     category: "Mecánica y mantenimiento",
     description: "Neumáticos nuevos y alineación de la dirección de regalo.",
-    price: "873.00",
+    
     image: "http://lorempixel.com/640/480/technics",
   },
 
@@ -85,7 +85,7 @@ const services = [
     name: "Suspensión",
     category: "Mecánica y mantenimiento",
     description: "Reparación o cambio de la suspensión",
-    price: "873.00",
+    
     image: "http://lorempixel.com/640/480/technics",
   },
 
@@ -94,7 +94,7 @@ const services = [
     category: "Mecánica y mantenimiento",
     description:
       "Revisión y cambio de los discos de freno en el caso de que estén erosionados",
-    price: "873.00",
+    
     image: "http://lorempixel.com/640/480/technics",
     createdAt: ISODate("2020-10-22T08:20:20.815Z"),
     updatedAt: ISODate("2020-10-22T08:20:20.815Z"),
@@ -106,7 +106,7 @@ const services = [
     category: "Mecánica y mantenimiento",
     description:
       "Reemplazo de las pastillas de freno con zapatas de alta calidad y durabilidad",
-    price: "873.00",
+    
     image: "http://lorempixel.com/640/480/technics",
   },
   {
@@ -114,7 +114,7 @@ const services = [
     category: "Mecánica y mantenimiento",
     description:
       "Revisión completa de su vehículo para que no tenga problemas al pasar la revisión periódica",
-    price: "873.00",
+    
     image: "http://lorempixel.com/640/480/technics",
   },
   {
@@ -126,7 +126,7 @@ const services = [
     category: "Mecánica y mantenimiento",
     description:
       "Reparación mecánica de su vehículo. Fallos de motor, elécticos y cambios de piezas en general",
-    price: "873.00",
+    
     image: "http://lorempixel.com/640/480/technics",
   },
 ];
@@ -198,23 +198,13 @@ Promise.all([
   Workshop.deleteMany(),
   User.deleteMany(),
   Service.deleteMany(),
-  ReviewService.deleteMany(),
+  ServiceResume.deleteMany(),
   Car.deleteMany(),
 ])
 
   .then(() => {
     for (let i = 0; i < workshops.length; i++) {
-      const workshop = new Workshop({
-        name: "Taller La laguna",
-        email: "lalaguna@taller.com",
-        telephone: "616616616",
-        image:
-          "https://lh3.ggpht.com/p/AF1QipPjxDVkPlzrJBid7FnC23G_-3zTl4LFxkKB91PJ=s1536",
-        location: {
-          lat: 36.5044271,
-          lng: -6.2736591,
-        },
-      });
+      const workshop = new Workshop(workshops[i]);
       workshop
         .save()
         .then((w) => {
@@ -240,9 +230,9 @@ Promise.all([
   .catch((e) => console.log(e))
   .then(() => {
     for (let i = 0; i < users.length; i++) {
-      const user = new User({
-        ...users[i],
-      });
+      const user = new User(
+        users[i]
+      );
       user
         .save()
         .then((u) => {
