@@ -8,17 +8,20 @@ module.exports.login = (req, res, next) => {
   const { email, password } = req.body;
   if (!email || !password) {
     
-    throw createError(400, "Missing credentials");
+    throw createError(400, "Faltan credenciales");
   }
   User.findOne({ email })
     .then((user) => {
       if (!user) {
-        // res.status(400).json({})
-        throw createError(400, "Wrong credentials");
+        // res.status(400).send({})
+        next(createError(409, "Credenciales erroneas"))
+        // throw createError(400, "Wrong credentials");
       } else {
         return user.checkPassword(password).then((match) => {
           if (!match) {
-            throw createError(400, "Wrong credentials");
+            next(createError(409, "Credenciales erroneas"))
+            // throw createError(400, "Wrong credentials");
+           
           } else {
             if (user.activation.active) {
               req.session.userId = user._id;
@@ -37,6 +40,7 @@ module.exports.login = (req, res, next) => {
       }
     })
     .catch((e) => {
+      console.log(e)
       next();
     });
 };

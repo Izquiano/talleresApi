@@ -130,3 +130,25 @@ module.exports.sendDeleteCarEmail = (name, email) => {
 		`,
   });
 };
+
+
+module.exports.sendDeleteResumeToUser = (user, workshop, dateSr) => {
+  transport.sendMail({
+    to: user.email,
+    sender: `App Talleres`,
+    subject: "Reserva Denegada",
+    html: `
+    <h1>Hola ${user.name}</h1>
+    <h3>El taller <b>${
+      workshop
+    } ha denegado su reserva</b></h3>
+    
+    <p><b>Fecha de la reserva:</b></p>
+  <p>${FormatDate(dateSr)}</p>
+
+    
+              
+          `,
+  });
+
+}

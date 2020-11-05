@@ -33,7 +33,7 @@ module.exports.list = (req, res, next) => {
 module.exports.listByUser = (req, res, next) => {
   const { id } = req.params;
   ServiceResume.find({ user: id })
-    .sort({ active: 1, date: -1 })
+    .sort({ active: -1, date: -1 })
     .populate({
       path: "services",
       populate: {
@@ -102,18 +102,24 @@ module.exports.serviceResumeDetail = (req, res, next) => {
 
 module.exports.delete = (req, res, next) => {
   ServiceResume.findById(req.params.id)
-
+  
+  .populate("workshop")
+  
+  .populate("user")
     .then((sr) => {
+      console.log(sr)
       if (!sr) {
         throw createError(404, "Service Resume not found");
       } else {
-        if (sr.user != req.session.userId) {
+        if (sr.user._id != req.session.userId) {
           throw createError(
             403,
             "You cannot delete Services Resume that aren't yours"
           );
         } else {
+          nodemailer.sendDeleteResumeToUser(sr.user, sr.workshop.name, sr.date);
           return sr.delete().then(() => {
+            
             res.status(200).json({})
           });
         }
