@@ -16,6 +16,9 @@ const cors = require('./config/cors.config')
  * Configure express
  */
 const app = express();
+if (app.get('env') === 'production') {
+  app.set('trust proxy', 1)
+}
 app.use(cors)
 app.use(logger('dev'));
 app.use(express.json());
@@ -25,10 +28,10 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use(session);
 app.use(passportConfig);
 
-app.use((req, _, next) => {
-  req.currentUser = req.session.user
-  next()
-})
+// app.use((req, _, next) => {
+//   req.currentUser = req.session.user
+//   next()
+// })
 
 /**
  * Configure routes

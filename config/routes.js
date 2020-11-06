@@ -5,14 +5,13 @@ const authMiddleware = require("../middlewares/auth.middleware");
 const baseController = require("../controllers/base.controller");
 const userController = require("../controllers/user.controller");
 const serviceController = require("../controllers/service.controller");
-const reviewServiceController = require("../controllers/review.service.controller");
 const workshopController = require("../controllers/workshop.controller");
 const carController = require("../controllers/car.controller");
 const serviceResumeController = require("../controllers/serviceResume.controller");
 
 module.exports = router;
 
-router.get("/", authMiddleware.isNotAuthenticated, baseController.index);
+// router.get("/", authMiddleware.isNotAuthenticated, baseController.index);
 
 // Workshops
 router.get(
@@ -59,24 +58,24 @@ router.post(
 
 router.get(
   "/logout",
-  authMiddleware.isAuthenticated,
+  // authMiddleware.isAuthenticated,
   userController.logout
 );
 
 router.get(
   "/users",
-  authMiddleware.isAuthenticated,
+  // authMiddleware.isAuthenticated,
   userController.list
 );
 
 router.get(
   "/user/:id",
-  authMiddleware.isAuthenticated,
+  // authMiddleware.isAuthenticated,
   userController.profile
 );
 router.patch(
   "/user/:id",
-  authMiddleware.isAuthenticated,
+  // authMiddleware.isAuthenticated,
   userController.editProfile
 );
 

@@ -13,21 +13,19 @@ module.exports.login = (req, res, next) => {
   User.findOne({ email })
     .then((user) => {
       if (!user) {
-        // res.status(400).send({})
+       
         next(createError(409, "Credenciales erroneas"))
-        // throw createError(400, "Wrong credentials");
+        
       } else {
         return user.checkPassword(password).then((match) => {
           if (!match) {
             next(createError(409, "Credenciales erroneas"))
-            // throw createError(400, "Wrong credentials");
+            
            
           } else {
             if (user.activation.active) {
-              req.session.userId = user._id;
-
-              // req.session.user = user;
-              console.log(req.session.userId);
+              req.session.userId = user.id;
+             
               res.json(user);
             } else {
               throw createError(
