@@ -97,34 +97,34 @@ router.get('/auth/google', authMiddleware.isNotAuthenticated, userController.doS
 // Cars
 router.get(
   "/cars",
-  authMiddleware.isAuthenticated,
+  // authMiddleware.isAuthenticated,
   carController.list
 );
 
 router.post(
   "/cars",
-  authMiddleware.isAuthenticated,
+  // authMiddleware.isAuthenticated,
   carController.create
 );
 router.get(
   "/cars/:id",
-  authMiddleware.isAuthenticated,
+  // authMiddleware.isAuthenticated,
   carController.profile
 );
 router.get(
   "/user/cars/:id",
-  authMiddleware.isAuthenticated,
+  // authMiddleware.isAuthenticated,
   carController.listUserCars
 );
 
 router.patch(
   "/cars/:id",
-  authMiddleware.isAuthenticated,
+  // authMiddleware.isAuthenticated,
   carController.edit
 );
 router.delete(
   "/cars/:id",
-  authMiddleware.isAuthenticated,
+  // authMiddleware.isAuthenticated,
   carController.delete
 );
 
@@ -132,7 +132,7 @@ router.delete(
 
 router.post(
   "/services-resume",
-  authMiddleware.isAuthenticated,
+  // authMiddleware.isAuthenticated,
   serviceResumeController.create
 );
 router.get(
@@ -142,33 +142,33 @@ router.get(
 );
 router.patch(
   "/services-resume/:id",
-  authMiddleware.isAuthenticated,
+  // authMiddleware.isAuthenticated,
   serviceResumeController.edit
 );
 router.get(
   "/services-resume/:id",
-  authMiddleware.isAuthenticated,
+  // authMiddleware.isAuthenticated,
   serviceResumeController.listByUser
 )
 router.get(
   "/services-resume/detail/:id",
-  authMiddleware.isAuthenticated,
+  // authMiddleware.isAuthenticated,
   serviceResumeController.serviceResumeDetail
 )
 router.delete(
   "/services-resume/delete/:id",
-  authMiddleware.isAuthenticated,
+  // authMiddleware.isAuthenticated,
   serviceResumeController.delete
 )
 router.patch(
   "/services-resume/confirmation/:id",
-  authMiddleware.isAuthenticated,
+  // authMiddleware.isAuthenticated,
   serviceResumeController.confirmation
 )
 
 router.patch(
   "/cerrar-parte/:id",
-  authMiddleware.isAuthenticated,
+  // authMiddleware.isAuthenticated,
   serviceResumeController.cerrarParte
 );
 
