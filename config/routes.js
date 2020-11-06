@@ -31,22 +31,22 @@ router.get(
 );
 router.post(
   "/services",
-  // authMiddleware.isAuthenticated, upload.single('image')
+  authMiddleware.isAuthenticated,
   serviceController.create
 );
 router.get(
   "/services/:id",
-  // authMiddleware.isAuthenticated,
+  authMiddleware.isAuthenticated,
   serviceController.show
 );
 router.patch(
   "/services/:id",
-  // authMiddleware.isAuthenticated,
+  authMiddleware.isAuthenticated,
   serviceController.edit
 );
 router.delete(
   "/services/:id",
-  // authMiddleware.isAuthenticated,
+  authMiddleware.isAuthenticated,
   serviceController.delete
 );
 
@@ -65,18 +65,18 @@ router.get(
 
 router.get(
   "/users",
-  // authMiddleware.isAuthenticated,
+  authMiddleware.isAuthenticated,
   userController.list
 );
 
 router.get(
   "/user/:id",
-  // authMiddleware.isAuthenticated,
+  authMiddleware.isAuthenticated,
   userController.profile
 );
 router.patch(
   "/user/:id",
-  // authMiddleware.isAuthenticated,
+  authMiddleware.isAuthenticated,
   userController.editProfile
 );
 
@@ -97,34 +97,34 @@ router.get('/auth/google', authMiddleware.isNotAuthenticated, userController.doS
 // Cars
 router.get(
   "/cars",
-  // authMiddleware.isAuthenticated,
+  authMiddleware.isAuthenticated,
   carController.list
 );
 
 router.post(
   "/cars",
-  // authMiddleware.isAuthenticated,
+  authMiddleware.isAuthenticated,
   carController.create
 );
 router.get(
   "/cars/:id",
-  // authMiddleware.isAuthenticated,
+  authMiddleware.isAuthenticated,
   carController.profile
 );
 router.get(
   "/user/cars/:id",
-  // authMiddleware.isAuthenticated,
+  authMiddleware.isAuthenticated,
   carController.listUserCars
 );
 
 router.patch(
   "/cars/:id",
-  // authMiddleware.isAuthenticated,
+  authMiddleware.isAuthenticated,
   carController.edit
 );
 router.delete(
   "/cars/:id",
-  // authMiddleware.isAuthenticated,
+  authMiddleware.isAuthenticated,
   carController.delete
 );
 
@@ -132,7 +132,7 @@ router.delete(
 
 router.post(
   "/services-resume",
-  // authMiddleware.isAuthenticated,
+  authMiddleware.isAuthenticated,
   serviceResumeController.create
 );
 router.get(
@@ -142,62 +142,33 @@ router.get(
 );
 router.patch(
   "/services-resume/:id",
-  // authMiddleware.isAuthenticated,
+  authMiddleware.isAuthenticated,
   serviceResumeController.edit
 );
 router.get(
   "/services-resume/:id",
-  // authMiddleware.isAuthenticated,
+  authMiddleware.isAuthenticated,
   serviceResumeController.listByUser
 )
 router.get(
   "/services-resume/detail/:id",
-  // authMiddleware.isAuthenticated,
+  authMiddleware.isAuthenticated,
   serviceResumeController.serviceResumeDetail
 )
 router.delete(
   "/services-resume/delete/:id",
-  // authMiddleware.isAuthenticated,
+  authMiddleware.isAuthenticated,
   serviceResumeController.delete
 )
 router.patch(
   "/services-resume/confirmation/:id",
-  // authMiddleware.isAuthenticated,
+  authMiddleware.isAuthenticated,
   serviceResumeController.confirmation
 )
 
 router.patch(
   "/cerrar-parte/:id",
-  // authMiddleware.isAuthenticated,
+  authMiddleware.isAuthenticated,
   serviceResumeController.cerrarParte
 );
 
-
-// Review Services
-router.get(
-  "/review-service",
-  // authMiddleware.isAuthenticated,
-  reviewServiceController.list
-);
-
-
-router.post(
-  "/service/:id/review",
-  authMiddleware.isAuthenticated,
-  reviewServiceController.createReview
-);
-router.get(
-  "/review-service/:id",
-  authMiddleware.isAuthenticated,
-  reviewServiceController.detail
-);
-router.patch(
-  "/review-service/:id",
-  authMiddleware.isAuthenticated,
-  reviewServiceController.editReview
-);
-router.delete(
-  "/review-service/:id",
-  authMiddleware.isAuthenticated,
-  reviewServiceController.deleteReview
-);
