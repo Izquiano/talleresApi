@@ -8,7 +8,7 @@ module.exports = session({
   resave: true,
   saveUninitialized: false,
   cookie: {
-    secure: process.env.SESSION_SECRET ,
+    secure: false,
     httpOnly: true,
     maxAge: SESSION_MAX_AGE_SECONDS * 1000,
     sameSite: 'none'
