@@ -8,10 +8,10 @@ module.exports = session({
   resave: true,
   saveUninitialized: false,
   cookie: {
-    secure: true,
+    secure: true, //en true para producción
     httpOnly: true,
     maxAge: SESSION_MAX_AGE_SECONDS * 1000,
-    sameSite: 'none'
+    sameSite: 'none' // descomentar para producción
   },
   store: new MongoStore({
     mongooseConnection: mongoose.connection,

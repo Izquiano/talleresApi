@@ -53,11 +53,10 @@ module.exports.profile = (req, res, next) => {
     .populate("car")
 
     .then((u) => {
-      if (u._id != req.session.userId) {
-        throw createError(403, "You can't view another user's profile");
-      } else {
+      console.log(req)
+      
         res.status(200).json(u);
-      }
+      
     })
     .catch((err) => console.log(err));
 };
