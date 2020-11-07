@@ -111,18 +111,13 @@ module.exports.delete = (req, res, next) => {
       if (!sr) {
         throw createError(404, "Service Resume not found");
       } else {
-        if (sr.user._id != req.session.userId) {
-          throw createError(
-            403,
-            "You cannot delete Services Resume that aren't yours"
-          );
-        } else {
+        
           nodemailer.sendDeleteResumeToUser(sr.user, sr.workshop.name, sr.date);
           return sr.delete().then(() => {
             
             res.status(200).json({})
           });
-        }
+        
       }
     })
     .catch((e) => next(e));
