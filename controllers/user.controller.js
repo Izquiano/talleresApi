@@ -38,7 +38,7 @@ module.exports.login = (req, res, next) => {
       }
     })
     .catch((e) => {
-      console.log(e)
+      console.log("Error", e)
       next();
     });
 };
