@@ -20,7 +20,7 @@ function FormatDate(dateString) {
 const transport = nodemailer.createTransport({
   service: "Gmail",
   auth: {
-    user: user,
+    user: process.env.NM_USER,
     pass: process.env.NM_PASS,
   },
 });

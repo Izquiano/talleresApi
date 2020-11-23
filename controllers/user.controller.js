@@ -86,6 +86,7 @@ module.exports.list = (req, res, next) => {
 };
 
 module.exports.activateUser = (req, res, next) => {
+  console.log(req.params.token)
   User.findOne({ "activation.token": req.params.token })
     .then((user) => {
       user.activation.active = true;
